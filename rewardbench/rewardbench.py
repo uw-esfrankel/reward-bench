@@ -254,7 +254,10 @@ def rewardbench(args: Args):
     if args.model in MODEL_CONFIGS:
         config = MODEL_CONFIGS[args.model]
     else:
-        config = MODEL_CONFIGS["default"]
+        if "openrlhf" in args.model.lower() and "rm" in args.model.lower():
+            config = MODEL_CONFIGS["openrlhf_rm"]
+        else:
+            config = MODEL_CONFIGS["default"]
     logger.info(f"Using reward model config: {config}")
 
     # Default entries

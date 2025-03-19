@@ -32,6 +32,7 @@ from .internlm import InternLMPipeline
 from .ldlreward import LDLPipeline, LDLRewardModel27B
 from .openassistant import *  # noqa
 from .openbmb import LlamaRewardModel, OpenBMBPipeline
+from .openrlhf import build_openrlhf_rm, OpenRLHFPipeline
 from .pairrm import DebertaV2PairRM, PairRMPipeline
 from .pipeline import RewardBenchPipeline
 from .qrm import LlamaForRewardModelWithGating3, LlamaForRewardModelWithGating31
@@ -56,6 +57,13 @@ REWARD_MODEL_CONFIG = {
     "default_v2": {
         "model_builder": AutoModelForSequenceClassification.from_pretrained,
         "pipeline_builder": RewardBenchPipeline,
+        "quantized": False,
+        "custom_dialogue": False,
+        "model_type": "Seq. Classifier",
+    },
+    "openrlhf_rm": {
+        "model_builder": build_openrlhf_rm,
+        "pipeline_builder": OpenRLHFPipeline,
         "quantized": False,
         "custom_dialogue": False,
         "model_type": "Seq. Classifier",

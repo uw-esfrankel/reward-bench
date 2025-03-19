@@ -39,6 +39,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.10",
+    
     install_requires=[
         "accelerate",
         "bitsandbytes",
@@ -56,12 +57,15 @@ setup(
         "tokenizers",
         "torch",  # install before pip install -e . for best experience
         "tiktoken",  # unpinned for vllm dependency compatibility
-        "transformers==4.47.1",  # pinned at most recent version
+        "transformers",  # pinned at most recent version
         "trl>=0.8.2",  # fixed transformers import error, for DPO
         "wandb",  # for loading model path / reivisions from wandb on cli
         # peft, einops, and deepspeed removed from experimental version with training code
         # for RM training, we recommend using https://github.com/allenai/open-instruct
         # scipy previously included for analysis
+        "deepspeed",
+        "peft",
+        "flash-attn"
     ],
     extras_require={
         "generative": [
