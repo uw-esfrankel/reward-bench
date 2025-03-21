@@ -65,7 +65,6 @@ setup(
         # scipy previously included for analysis
         "deepspeed",
         "peft",
-        "flash-attn"
     ],
     extras_require={
         "generative": [
