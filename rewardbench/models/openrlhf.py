@@ -242,15 +242,14 @@ def _get_reward_model(base_pretrained_model, base_llm_model, value_head_prefix="
 
 def build_openrlhf_rm(model_name, **kwargs):
     # load the model locally
-    if os.path.exists(model_name):
-        reward_model = get_llm_for_sequence_regression(
-            model_name,
-            "reward",
-            normalize_reward=True,
-            use_flash_attention_2=True,
-            bf16=True,
-            value_head_prefix="score"
-        )
+    reward_model = get_llm_for_sequence_regression(
+        model_name,
+        "reward",
+        normalize_reward=True,
+        use_flash_attention_2=True,
+        bf16=True,
+        value_head_prefix="score"
+    )
     
     reward_model.eval().requires_grad_(False)
     return reward_model
