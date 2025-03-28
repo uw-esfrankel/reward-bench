@@ -254,7 +254,7 @@ def rewardbench(args: Args):
     if args.model in MODEL_CONFIGS:
         config = MODEL_CONFIGS[args.model]
     else:
-        if "openrlhf" in args.model.lower() and "rm" in args.model.lower():
+        if "esfrankel" in args.model.lower():
             config = MODEL_CONFIGS["openrlhf_rm"]
         else:
             config = MODEL_CONFIGS["default"]
